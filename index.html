@@ -1,53 +1,97 @@
 <!DOCTYPE html>
+<!--
+  Hey, you found the source. Nice.
+  There may or may not be an easter egg hiding somewhere on this page. 🦞
+-->
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <title>Hi, I&#8217;m Brian.</title>
-  <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brian Temple</title>
+    <meta name="description" content="Brian Temple — software engineer, inventor, and spatial computing builder at Apple's Vision Products Group. 8 patents in AR/VR. Founder of Lobsters, Inc.">
 
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-249514-1']);
-    _gaq.push(['_trackPageview']);
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://briantemple.com/">
+    <meta property="og:title" content="Brian Temple">
+    <meta property="og:description" content="Software engineer, inventor, and spatial computing builder. 8 patents in AR/VR. Currently at Apple's Vision Products Group.">
+    <meta property="og:image" content="https://briantemple.com/img/avatar-hover.jpg">
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Brian Temple">
+    <meta name="twitter:description" content="Software engineer, inventor, and spatial computing builder. 8 patents in AR/VR. Currently at Apple's Vision Products Group.">
+    <meta name="twitter:image" content="https://briantemple.com/img/avatar-hover.jpg">
 
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <div id="frame">
-    <h1><img src="brian.png" class="right photo" alt="Hi, I'm Brian"/>Hi, I&#8217;m Brian</h1>
-    <h2>I like software, teaching, and photography</h2>
-    <h2>It&#8217;s nice to meet you</h2>
-    <ul class="nav">
-      <li class="selected"><a href="javascript:false;">Introduction</a></li>
-      <li><a href="http://www.linkedin.com/in/briantemple">R&#233;sum&#233;</a></li>
-      <li><a href="http://www.instagram.com/briantemple">Photography</a></li>
-    </ul>
+    <div id="scanlines"></div>
+    <div class="container">
+        <!-- Intentional retro usage for Lobster Mode -->
+        <marquee>🦞🦞🦞 LOBSTERS, INC. — EST. 2026 — OPTIMIZED FOR NETSCAPE NAVIGATOR 4.0 🦞🦞🦞</marquee>
 
-    <div class="clear">&nbsp;</div>
+        <header>
+            <div class="profile-stack">
+                <img src="img/avatar-young.jpg" alt="Brian as a child" class="profile-img main">
+                <img src="img/avatar-hover.jpg" alt="Brian Temple" class="profile-img hover">
+            </div>
+            <h1>Hi, I'm Brian.</h1>
+        </header>
 
-    <div class="column left">
-      <h3>Current</h3>
-      <ul>
-        <li>Software developer, <a href="http://www.apple.com/">Apple</a> Technology Development Group</li>
-      </ul>
+        <div class="intro">
+            <p>
+                I'm a software engineer who loves building things from the ground up.
+                Whether it's architecting experiences for <strong>Apple's Vision Products Group</strong>
+                or teaching computer science, I'm driven by the idea that technology should make people's lives better, easier, and a lot more fun.
+            </p>
+            <h2 class="greeting">It's nice to meet you.</h2>
+        </div>
+
+        <nav class="nav-links">
+            <a href="https://linkedin.com/in/briantemple">Resume</a>
+            <a href="https://patents.google.com/?inventor=Brian+Temple&assignee=Apple">Patents</a>
+            <a href="https://instagram.com/briantemple">Life in Photos</a>
+            <a href="mailto:brian@briantemple.com">Email</a>
+            <a href="https://github.com/briantemple">Code</a>
+        </nav>
+
+        <section>
+            <h2>What I've been building</h2>
+
+            <div class="highlight">
+                <span class="highlight-title">The Future of Computing</span>
+                <p class="highlight-desc">Currently part of the team bringing spatial computing to life. My job is crafting impossible experiences that somehow feel the way they always should have.</p>
+            </div>
+
+            <div class="highlight">
+                <span class="highlight-title">Patents & Research <span class="pill">8 Patents</span></span>
+                <p class="highlight-desc">I hold multiple patents in the areas of augmented and virtual reality, and I'm currently exploring the next frontier of agency through <strong><span id="lobster-trigger">🦞</span> Lobsters, Inc</strong> — a research project at the edge of AI and autonomy.</p>
+                <div id="lobster-hint">[ click the lobster again to return ]</div>
+            </div>
+        </section>
+
+        <section id="beyond">
+            <h2>Beyond the screen</h2>
+            <p class="highlight-desc">
+                When I'm not in the code, you'll likely find me behind a <strong>drum kit</strong>. 
+                I find the best ideas are at the intersection of the digital and analog.
+            </p>
+
+            <div class="artifacts">
+                <div class="artifact-card" style="grid-column: span 2;">
+                    <img src="img/powerstation.jpg" alt="Brian playing drums at The Power Station recording studio, 2025">
+                    <div class="artifact-label">The Power Station recording studio, 2025</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Thanks for stopping by.</p>
+            <p style="font-size: 12px; opacity: 0.6; margin-top: 20px;">&copy; 2026 Brian Temple.</p>
+        </footer>
     </div>
-    <div class="column right">
-      <h3>Recent</h3>
-      <ul>
-        <li>Founder and consultant, <a href="http://www.plaidsoftware.com">Plaid Software</a></li>
-        <li>Lecturer, <a href="http://www.ucdenver.edu">University of Colorado</a></li>
-      </ul>
-    </div>
 
-    <div class="clear">&nbsp;</div>
-
-  </div>
+    <script src="script.js"></script>
 </body>
 </html>
