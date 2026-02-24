@@ -146,10 +146,56 @@ h2 {
     display: flex;
     flex-direction: column;
 }
-.artifact-card img {
+.artifact-card img,
+.artifact-card video {
     width: 100%;
     height: auto;
     display: block;
+}
+.video-wrapper {
+    position: relative;
+    width: 100%;
+}
+.mute-toggle {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(8px);
+    z-index: 10;
+}
+.mute-toggle:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+.mute-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+.mute-toggle.unmuted #mute-line,
+.mute-toggle.unmuted #mute-line-2 {
+    display: none;
+}
+.mute-toggle:not(.unmuted) #mute-icon {
+    opacity: 0.8;
+}
+@media (prefers-color-scheme: dark) {
+    .mute-toggle {
+        background: rgba(255, 255, 255, 0.15);
+    }
+    .mute-toggle:hover {
+        background: rgba(255, 255, 255, 0.25);
+    }
 }
 .artifact-label {
     padding: 12px;
@@ -166,56 +212,56 @@ h2 {
     color: var(--secondary);
 }
 
-/* The Secret Lobster Trigger */
-#lobster-trigger {
+/* The Secret Drum Trigger */
+#drum-trigger {
     cursor: pointer;
     display: inline-block;
     transition: transform 0.2s;
     user-select: none;
 }
-#lobster-trigger:hover {
+#drum-trigger:hover {
     transform: scale(1.4) rotate(-10deg);
 }
 
-/* --- LOBSTER CHAOS THEME --- */
-body.geocities {
-    background-color: #8B0000;
+/* --- DRUM CHAOS THEME --- */
+body.drum-mode {
+    background-color: #1a0033;
     background-image: repeating-linear-gradient(
         45deg,
-        rgba(207,79,39,0.15) 0px,
-        rgba(207,79,39,0.15) 2px,
+        rgba(138,43,226,0.15) 0px,
+        rgba(138,43,226,0.15) 2px,
         transparent 2px,
         transparent 20px
     );
-    color: #ffe4b5;
+    color: #ffd700;
     font-family: "Comic Sans MS", "Comic Sans", cursive !important;
     animation: bg-pulse 3s ease-in-out infinite;
-    cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='28' font-size='28'>🦞</text></svg>") 16 16, auto;
+    cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='28' font-size='28'>🥁</text></svg>") 16 16, auto;
 }
-body.geocities h1 {
-    color: #ff6b35 !important;
+body.drum-mode h1 {
+    color: #ff1493 !important;
     font-family: "Comic Sans MS" !important;
-    text-shadow: 3px 3px 0px #000, -1px -1px 0px #ff0000;
+    text-shadow: 3px 3px 0px #000, -1px -1px 0px #8a2be2;
     position: relative;
     animation: glitch 2.5s infinite;
 }
-body.geocities h2 {
+body.drum-mode h2 {
     color: #ffd700 !important;
     font-family: "Comic Sans MS" !important;
 }
-body.geocities .pill { background: #ff6b35; color: #fff; border: 2px solid #ffd700; }
-body.geocities a { color: #ffd700; text-decoration: underline; }
-body.geocities .container { 
-    border: 6px double #ff6b35; 
-    background: rgba(139,0,0,0.85); 
-    padding: 40px 24px; 
+body.drum-mode .pill { background: #ff1493; color: #fff; border: 2px solid #ffd700; }
+body.drum-mode a { color: #ffd700; text-decoration: underline; }
+body.drum-mode .container {
+    border: 6px double #ff1493;
+    background: rgba(26,0,51,0.85);
+    padding: 40px 24px;
     animation: shake 8s ease-in-out infinite;
 }
-body.geocities .footer { border-top: 4px dashed #ff6b35; color: #ffe4b5; }
-body.geocities .highlight-desc { color: #ffe4b5 !important; }
-body.geocities .highlight-title { color: #ff6b35 !important; }
+body.drum-mode .footer { border-top: 4px dashed #ff1493; color: #ffd700; }
+body.drum-mode .highlight-desc { color: #ffd700 !important; }
+body.drum-mode .highlight-title { color: #ff1493 !important; }
 
-/* Lobster Mode Elements */
+/* Drum Mode Elements */
 .visitor-counter {
     display: none;
     margin-top: 20px;
@@ -225,14 +271,14 @@ body.geocities .highlight-title { color: #ff6b35 !important; }
     padding: 5px;
     border: 2px inset #808080;
 }
-body.geocities .visitor-counter { display: inline-block; }
+body.drum-mode .visitor-counter { display: inline-block; }
 
 marquee { display: none; }
-body.geocities marquee { 
-    display: block; 
-    color: #ff0; 
-    font-weight: bold; 
-    margin-bottom: 24px; 
+body.drum-mode marquee {
+    display: block;
+    color: #ff0;
+    font-weight: bold;
+    margin-bottom: 24px;
 }
 
 .greeting {
@@ -242,36 +288,36 @@ body.geocities marquee {
     font-size: 24px;
     margin-top: 10px;
 }
-body.geocities .greeting {
+body.drum-mode .greeting {
     color: #00ff00 !important;
     font-family: "Comic Sans MS", cursive !important;
     font-size: 28px !important;
     animation: blinker 1s step-start infinite;
 }
 
-#lobster-hint {
+#drum-hint {
     display: none;
     font-size: 11px;
-    color: #ff6b35;
+    color: #ff1493;
     margin-top: 4px;
     font-family: "Comic Sans MS", cursive;
     animation: blinker 1.5s step-start infinite;
 }
-body.geocities #lobster-hint { display: block; }
+body.drum-mode #drum-hint { display: block; }
 
 /* Animations */
 @keyframes blinker { 50% { opacity: 0; } }
 
 @keyframes bg-pulse {
-    0%, 100% { background-color: #8B0000; }
-    50%       { background-color: #5a0000; }
+    0%, 100% { background-color: #1a0033; }
+    50%       { background-color: #0d001a; }
 }
 
 @keyframes glitch {
-    0%, 90%, 100% { text-shadow: 3px 3px 0px #000, -1px -1px 0px #ff0000; transform: none; }
-    92%  { transform: skewX(-8deg); text-shadow: -4px 0 #ff0000, 4px 0 #00ffff; }
-    94%  { transform: skewX(6deg);  text-shadow: 4px 0 #ff6b35, -4px 0 #ffd700; }
-    96%  { transform: none;         text-shadow: 3px 3px 0px #000, -1px -1px 0px #ff0000; }
+    0%, 90%, 100% { text-shadow: 3px 3px 0px #000, -1px -1px 0px #8a2be2; transform: none; }
+    92%  { transform: skewX(-8deg); text-shadow: -4px 0 #8a2be2, 4px 0 #00ffff; }
+    94%  { transform: skewX(6deg);  text-shadow: 4px 0 #ff1493, -4px 0 #ffd700; }
+    96%  { transform: none;         text-shadow: 3px 3px 0px #000, -1px -1px 0px #8a2be2; }
 }
 
 @keyframes shake {
@@ -282,17 +328,17 @@ body.geocities #lobster-hint { display: block; }
     99%  { transform: translateX(2px); }
 }
 
-/* Lobster Rain */
-@keyframes lobster-fall {
+/* Drum Rain */
+@keyframes drum-fall {
     0%   { transform: translateY(-80px) rotate(0deg);   opacity: 1; }
     80%  { opacity: 1; }
     100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
 }
-.falling-lobster {
+.falling-drum {
     position: fixed;
     top: -80px;
     font-size: 28px;
-    animation: lobster-fall linear infinite;
+    animation: drum-fall linear infinite;
     z-index: 9999;
     pointer-events: none;
     will-change: transform;
@@ -313,4 +359,4 @@ body.geocities #lobster-hint { display: block; }
         rgba(0,0,0,0.18) 4px
     );
 }
-body.geocities #scanlines { display: block; }
+body.drum-mode #scanlines { display: block; }

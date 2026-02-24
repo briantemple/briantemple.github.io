@@ -1,39 +1,39 @@
-const trigger = document.getElementById('lobster-trigger');
+const trigger = document.getElementById('drum-trigger');
 const body = document.body;
 
-// --- Lobster Rain ---
-const LOBSTER_COUNT = 20;
-let lobsters = [];
+// --- Drum Rain ---
+const DRUM_COUNT = 20;
+let drums = [];
 
-function spawnLobsterRain() {
-    for (let i = 0; i < LOBSTER_COUNT; i++) {
-        const lob = document.createElement('div');
-        lob.textContent = '🦞';
-        lob.classList.add('falling-lobster');
+function spawnDrumRain() {
+    for (let i = 0; i < DRUM_COUNT; i++) {
+        const drum = document.createElement('div');
+        drum.textContent = '🥁';
+        drum.classList.add('falling-drum');
         const size = 22 + Math.random() * 32;
         const left = Math.random() * 96;
         const duration = 2.5 + Math.random() * 4;
         const delay = Math.random() * 5;
-        
+
         // Set individually - don't use cssText (overwrites class animation shorthand)
-        lob.style.left = `${left}vw`;
-        lob.style.fontSize = `${size}px`;
-        lob.style.animationDuration = `${duration}s`;
-        lob.style.animationDelay = `-${delay}s`;
-        
-        body.appendChild(lob);
-        lobsters.push(lob);
+        drum.style.left = `${left}vw`;
+        drum.style.fontSize = `${size}px`;
+        drum.style.animationDuration = `${duration}s`;
+        drum.style.animationDelay = `-${delay}s`;
+
+        body.appendChild(drum);
+        drums.push(drum);
     }
 }
 
-function clearLobsterRain() {
-    lobsters.forEach(el => el.remove());
-    lobsters = [];
+function clearDrumRain() {
+    drums.forEach(el => el.remove());
+    drums = [];
 }
 
 // --- Matrix / Starfield Background Canvas ---
 let canvas, ctx, matrixInterval;
-const CHARS = '🦞01アイウエオクケコ<>{}[]LOBSTER';
+const CHARS = '🥁♪♫♬🎵🎶01アイウエオクケコ<>{}[]DRUMS';
 
 function startMatrix() {
     canvas = document.createElement('canvas');
@@ -52,9 +52,9 @@ function startMatrix() {
     const drops = Array(cols).fill(1);
 
     matrixInterval = setInterval(() => {
-        ctx.fillStyle = 'rgba(139, 0, 0, 0.12)';
+        ctx.fillStyle = 'rgba(26, 0, 51, 0.12)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#ff6b35';
+        ctx.fillStyle = '#ff1493';
         ctx.font = '16px monospace';
         for (let i = 0; i < drops.length; i++) {
             const char = CHARS[Math.floor(Math.random() * CHARS.length)];
@@ -73,12 +73,12 @@ function stopMatrix() {
 
 // --- Toggle ---
 trigger.addEventListener('click', () => {
-    body.classList.toggle('geocities');
-    if (body.classList.contains('geocities')) {
-        spawnLobsterRain();
+    body.classList.toggle('drum-mode');
+    if (body.classList.contains('drum-mode')) {
+        spawnDrumRain();
         startMatrix();
     } else {
-        clearLobsterRain();
+        clearDrumRain();
         stopMatrix();
     }
 });
@@ -90,3 +90,39 @@ window.addEventListener('resize', () => {
         canvas.height = window.innerHeight;
     }
 });
+
+// --- Autoplay video on scroll ---
+const video = document.getElementById('drums-video');
+const muteToggle = document.getElementById('mute-toggle');
+
+if (video) {
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    video.play().catch(() => {
+                        // Autoplay blocked - not a problem since we have playsinline + muted
+                    });
+                } else {
+                    video.pause();
+                }
+            });
+        },
+        { threshold: 0.5 }
+    );
+    observer.observe(video);
+}
+
+// --- Mute toggle ---
+if (muteToggle && video) {
+    muteToggle.addEventListener('click', () => {
+        video.muted = !video.muted;
+        if (video.muted) {
+            muteToggle.classList.remove('unmuted');
+            muteToggle.setAttribute('aria-label', 'Unmute video');
+        } else {
+            muteToggle.classList.add('unmuted');
+            muteToggle.setAttribute('aria-label', 'Mute video');
+        }
+    });
+}

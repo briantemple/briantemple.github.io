@@ -39,9 +39,6 @@
 <body>
     <div id="scanlines"></div>
     <div class="container">
-        <!-- Intentional retro usage for Lobster Mode -->
-        <marquee>🦞🦞🦞 LOBSTERS, INC. — EST. 2026 — OPTIMIZED FOR NETSCAPE NAVIGATOR 4.0 🦞🦞🦞</marquee>
-
         <header>
             <div class="profile-stack">
                 <img src="img/avatar-young.jpg" alt="Brian as a child" class="profile-img main">
@@ -72,27 +69,43 @@
 
             <div class="highlight">
                 <span class="highlight-title">The Future of Computing</span>
-                <p class="highlight-desc">Currently part of the team bringing spatial computing to life. My job is crafting impossible experiences that somehow feel the way they always should have.</p>
+                <p class="highlight-desc">Currently part of the team bringing spatial computing to life. Eleven years at Apple and I still can't believe this is my job.</p>
             </div>
 
             <div class="highlight">
                 <span class="highlight-title">Patents & Research <span class="pill">8 Patents</span></span>
-                <p class="highlight-desc">I hold multiple patents in the areas of augmented and virtual reality, and I'm currently exploring the next frontier of agency through <strong><span id="lobster-trigger">🦞</span> Lobsters, Inc</strong> — a research project at the edge of AI and autonomy.</p>
-                <div id="lobster-hint">[ click the lobster again to return ]</div>
+                <p class="highlight-desc">I hold multiple patents in the areas of augmented and virtual reality, mostly things I can't talk about yet.</p>
             </div>
         </section>
 
         <section id="beyond">
             <h2>Beyond the screen</h2>
             <p class="highlight-desc">
-                When I'm not in the code, you'll likely find me behind a <strong>drum kit</strong>. 
+                When I'm not in the code, you'll likely find me behind a <strong>drum kit <span id="drum-trigger">🥁</span></strong>.
                 I find the best ideas are at the intersection of the digital and analog.
             </p>
+            <div id="drum-hint">[ click the drum again to return ]</div>
 
             <div class="artifacts">
                 <div class="artifact-card" style="grid-column: span 2;">
-                    <img src="img/powerstation.jpg" alt="Brian playing drums at The Power Station recording studio, 2025">
-                    <div class="artifact-label">The Power Station recording studio, 2025</div>
+                    <div class="video-wrapper">
+                        <video
+                            id="drums-video"
+                            src="img/charliehunter.mov"
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                        ></video>
+                        <button id="mute-toggle" class="mute-toggle" aria-label="Unmute video">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path id="mute-icon" d="M11 5L6 9H2v6h4l5 4V5z"/>
+                                <line id="mute-line" x1="23" y1="9" x2="17" y2="15" stroke-linecap="round"/>
+                                <line id="mute-line-2" x1="17" y1="9" x2="23" y2="15" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="artifact-label">Sitting in with Charlie Hunter, 2025</div>
                 </div>
             </div>
         </section>
